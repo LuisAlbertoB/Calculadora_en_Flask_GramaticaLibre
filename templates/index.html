@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora en Flask</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        input, button {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora en Notación Polaca Inversa</h1>
+    
+    <form method="POST">
+        <div id="numeros-container">
+            <label for="numeros">Numeros:</label><br>
+            <input type="text" name="numeros" placeholder="Introduce el primer número" required><br>
+            <input type="text" name="numeros" placeholder="Introduce el segundo número" required><br>
+            <!-- Aquí se agregarán dinámicamente más campos de números -->
+        </div>
+
+        <div>
+            <label for="operator">Operador:</label><br>
+            <input type="text" name="operator" placeholder="Introduce el operador" required><br>
+        </div>
+        
+        <button type="button" onclick="agregarCampo()">Añadir otro número</button>
+        <input type="submit" value="Calcular">
+    </form>
+
+    {% if result %}
+        <h2>Resultado: {{ result }}</h2>
+    {% endif %}
+
+    <script>
+        function agregarCampo() {
+            const container = document.getElementById('numeros-container');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'numeros';
+            input.placeholder = 'Introduce otro número';
+            container.appendChild(input);
+        }
+    </script>
+</body>
+</html>
